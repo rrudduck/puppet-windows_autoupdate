@@ -17,7 +17,7 @@ class windows_autoupdate::params {
   $scheduled_install_time              = '10'
   $use_wuserver                        = '0'
 
-  if $::operatingsystemrelease == 'Server 2012' {
+  if $::operatingsystemrelease !~ '2008' {
     $p_reg_key = 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate\Auto Update'
   } else {
     $p_reg_key = 'HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU'
