@@ -87,6 +87,13 @@ class windows_autoupdate(
     type   => 'dword',
     data   => $no_auto_update,
   }
+  
+  registry_value { 'AutoInstallMinorUpdates':
+    ensure => present,
+    path   => "${windows_autoupdate::params::p_reg_key}\\AutoInstallMinorUpdates",
+    type   => 'dword',
+    data   => 1 - $no_auto_update,
+  }
 
   registry_value { 'AUOptions':
     ensure => present,
